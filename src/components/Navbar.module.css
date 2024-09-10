@@ -1,0 +1,33 @@
+/* Navbar container styles */
+.navbar {
+  display: flex;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 64px;
+  margin-right: 450px;
+  display: flex;
+  justify-content: center; /* Centering horizontally */
+  align-items: center; /* Centering vertically */
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #000;
+  margin-right: auto; /* Push logo to the left */
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 32px; /* Space between the links */
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+  font-size: 18px; /* Adjust the size as needed */
+}
