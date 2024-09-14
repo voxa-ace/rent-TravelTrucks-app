@@ -1,33 +1,65 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCampers } from '../store/slices/campersSlice';
+import FilterSection from '../components/FilterSection';
+import CamperCard from '../components/CamperCard';
+import Button from '../components/Button';
+import styles from './CatalogPage.module.css';
 
 const CatalogPage = () => {
   const dispatch = useDispatch();
   const { campersList, status, error } = useSelector((state) => state.campers);
+  const [visibleCount, setVisibleCount] = useState(4);
+  const [selectedFilters, setSelectedFilters] = useState({
+    location: '',
+    equipment: [],
+    vehicleType: '',
+  });
 
   useEffect(() => {
     dispatch(fetchCampers());
   }, [dispatch]);
 
+  const handleLoadMore = () => {
+    setVisibleCount((prevCount) => prevCount + 4);
+  };
+
+  // Фільтрування кемперів за вибраними фільтрами
+  const filteredCampers = campersList?.items?.filter((camper) => {
+    const matchesLocation = selectedFilters.location
+      ? camper.location.toLowerCase().includes(selectedFilters.location.toLowerCase())
+      : true;
+    const matchesEquipment = selectedFilters.equipment.every((equip) =>
+      camper.equipment.includes(equip)
+    );
+    const matchesVehicleType = selectedFilters.vehicleType
+      ? camper.bodyType === selectedFilters.vehicleType
+      : true;
+    return matchesLocation && matchesEquipment && matchesVehicleType;
+  }) || [];
+
   return (
-    <div className="campers-list">
-      {status === 'loading' && <p>Завантаження кемперів...</p>}
-      {status === 'failed' && <p>Помилка: {error}</p>}
-      {campersList && campersList.items && campersList.items.length > 0 ? (
-        <ul>
-          {campersList.items.map((camper) => (
-            <li key={camper.id}>
-              <h2>{camper.name}</h2>
-              <p>Ціна: €{camper.price}</p>
-              {/* Інші деталі кемпера */}
-              <img src={camper.gallery[0].thumb} alt={camper.name} />
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Кемперів не знайдено</p>
-      )}
+    <div className={styles.container}>
+      <FilterSection
+        selectedFilters={selectedFilters}
+        setSelectedFilters={setSelectedFilters}
+      />
+      <div className={styles.campersList}>
+        {status === 'loading' && <p>Loading campers...</p>}
+        {status === 'failed' && <p>Error: {error}</p>}
+        {filteredCampers.length > 0 ? (
+          <>
+            {filteredCampers.slice(0, visibleCount).map((camper) => (
+              <CamperCard key={camper.id} camper={camper} />
+            ))}
+            {filteredCampers.length > visibleCount && (
+              <Button onClick={handleLoadMore}>Load More</Button>
+            )}
+          </>
+        ) : (
+          status !== 'loading' && <p>No campers found</p>
+        )}
+      </div>
     </div>
   );
 };

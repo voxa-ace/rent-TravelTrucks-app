@@ -1,0 +1,29 @@
+/* Button.module.css */
+.button {
+  background-color: var(--button);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: var(--button-hover);
+}
+
+.loadMoreButton {
+  background-color: var(--button);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 24px;
+}
+
+.loadMoreButton:hover {
+  background-color: var(--button-hover);
+}

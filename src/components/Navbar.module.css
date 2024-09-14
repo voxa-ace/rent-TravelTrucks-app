@@ -1,33 +1,50 @@
 /* Navbar container styles */
 .navbar {
   display: flex;
-  width: 100%;
+  /* width: 100%; */
   background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 64px;
-  margin-right: 450px;
-  display: flex;
-  justify-content: center; /* Centering horizontally */
-  align-items: center; /* Centering vertically */
+  padding: 10px 64px; /* Padding for both sides */
+  justify-content: space-between;
+  align-items: center; /* Center elements vertically */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+  box-sizing: border-box; /* Ensure padding doesn't cause overflow */
 }
 
+/* Logo styling */
 .logo {
-  font-size: 24px;
-  font-weight: bold;
-  color: #000;
-  margin-right: auto; /* Push logo to the left */
+  width: 136px; /* Figma logo size */
+  height: 16px;
 }
 
+/* Navigation Links Container */
+.navLinksContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 32px; /* 32px gap between the links */
+}
+
+/* Navigation Links */
 .navLinks {
   list-style: none;
   display: flex;
-  gap: 32px; /* Space between the links */
+  margin: auto;
+  gap: 32px; /* 32px space between the links as per Figma */
 }
 
+/* Individual link styling */
 .navLinks a {
   text-decoration: none;
-  color: #000;
-  font-weight: bold;
-  font-size: 18px; /* Adjust the size as needed */
+  color: #101828; /* Match Figma color */
+  font-weight: 500;
+  font-size: 16px; /* Match Figma typography */
+  line-height: 24px;
 }
+
+/* Remove margins/padding that might cause horizontal overflow */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensure elements stay within their containers */
+}
+

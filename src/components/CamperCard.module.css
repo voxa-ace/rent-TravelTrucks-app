@@ -1,0 +1,79 @@
+/* CamperCard.module.css */
+.camperItem {
+  display: flex;
+  gap: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.camperImage {
+  width: 240px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.camperDetails {
+  flex: 1;
+}
+
+.camperTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.priceAndLike {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.heartIcon {
+  width: 24px;
+  height: 24px;
+  fill: #e63946;
+  cursor: pointer;
+}
+
+.ratingAndLocation {
+  display: flex;
+  gap: 16px;
+  font-size: 14px;
+  color: #6b7280;
+  margin: 8px 0;
+}
+
+.camperLocation {
+  font-weight: 500;
+}
+
+.camperDescription {
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.equipmentBadges {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.equipmentBadge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  background-color: #f9fafb;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.badgeIcon {
+  width: 16px;
+  height: 16px;
+  fill: #9ca3af;
+}

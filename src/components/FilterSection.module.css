@@ -1,0 +1,68 @@
+/* FilterSection.module.css */
+.sidebar {
+  width: 360px;
+  background-color: #f7f7f7;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.locationContainer {
+  margin-bottom: 24px;
+}
+
+.locationLabel {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.locationInput {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  font-size: 14px;
+}
+
+.filterTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.vehicleEquipment {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.filterItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.filterItem.selected {
+  border: 2px solid red;
+}
+
+.vehicleType {
+  margin-bottom: 24px;
+}
+
+.vehicleTypeTitle {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.vehicleType input {
+  margin-right: 8px;
+}
