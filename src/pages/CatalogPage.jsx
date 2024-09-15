@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchCampers } from '../store/slices/campersSlice';
 import FilterSection from '../components/FilterSection';
 import CamperCard from '../components/CamperCard';
-import Button from '../components/Button';
 import styles from './CatalogPage.module.css';
 
 const CatalogPage = () => {
@@ -24,7 +23,6 @@ const CatalogPage = () => {
     setVisibleCount((prevCount) => prevCount + 4);
   };
 
-  // Фільтрування кемперів за вибраними фільтрами
   const filteredCampers = campersList?.items?.filter((camper) => {
     const matchesLocation = selectedFilters.location
       ? camper.location.toLowerCase().includes(selectedFilters.location.toLowerCase())
@@ -53,7 +51,9 @@ const CatalogPage = () => {
               <CamperCard key={camper.id} camper={camper} />
             ))}
             {filteredCampers.length > visibleCount && (
-              <Button onClick={handleLoadMore}>Load More</Button>
+              <button onClick={handleLoadMore} className={styles.loadMoreButton}>
+                Load More
+              </button>
             )}
           </>
         ) : (

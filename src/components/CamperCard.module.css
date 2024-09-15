@@ -1,79 +1,149 @@
 /* CamperCard.module.css */
-.camperItem {
+
+/* Основна картка */
+.card {
   display: flex;
-  gap: 24px;
-  background-color: #fff;
-  border-radius: 8px;
-  padding: 16px;
-  margin-bottom: 32px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  padding: 24px;
+  width: 100%;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+@media (min-width: 768px) {
+  .card {
+    flex-direction: row;
+  }
+}
+
+/* Фото кемпера */
+.imageContainer {
+  flex: 0 0 100%;
+  height: auto;
+  margin-right: 0;
+}
+
+@media (min-width: 768px) {
+  .imageContainer {
+    flex: 0 0 292px;
+    height: 320px;
+    margin-right: 24px;
+  }
 }
 
 .camperImage {
-  width: 240px;
-  height: 180px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
-.camperDetails {
+/* Інформація про кемпера */
+.infoContainer {
   flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.camperTitleContainer {
+.camperTitle {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--main);
+  margin-bottom: 8px;
+}
+
+/* Ціна зверху праворуч */
+.priceContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 16px;
 }
 
-.priceAndLike {
+.price {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.333;
+  color: var(--main);
+}
+
+.ratingLocation {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 16px;
+  margin-bottom: 16px;
 }
 
-.heartIcon {
-  width: 24px;
-  height: 24px;
-  fill: #e63946;
-  cursor: pointer;
+.rating {
+  color: var(--rating);
+  font-weight: 600;
 }
 
-.ratingAndLocation {
+.location {
+  color: var(--text);
+}
+
+.description {
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+/* Значки обладнання */
+.equipment {
   display: flex;
-  gap: 16px;
-  font-size: 14px;
-  color: #6b7280;
-  margin: 8px 0;
-}
-
-.camperLocation {
-  font-weight: 500;
-}
-
-.camperDescription {
-  font-size: 14px;
-  color: #4b5563;
-}
-
-.equipmentBadges {
-  display: flex;
+  flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
+  margin-top: 24px;
 }
 
 .equipmentBadge {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 4px 8px;
-  background-color: #f9fafb;
-  border-radius: 4px;
-  font-size: 12px;
+  justify-content: center; /* Центрування вмісту */
+  padding: 12px 18px; /* Відступи: 12px зверху та знизу, 18px зліва та справа */
+  border-radius: 100px;
+  background: #F2F4F7;
+  mix-blend-mode: multiply;
+  /* Видалено flex властивості, щоб фон не розтягувався */
 }
 
-.badgeIcon {
-  width: 16px;
-  height: 16px;
-  fill: #9ca3af;
+.equipmentBadge svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px; /* Відступ між іконкою та текстом */
+}
+
+.equipmentBadge span {
+  font-size: 14px;
+  color: var(--main);
+}
+
+/* Кнопка */
+.buttonContainer {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: auto;
+}
+
+.showMoreButton {
+  background-color: #D84343;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 200px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.showMoreButton:hover {
+  background-color: #E44848;
 }

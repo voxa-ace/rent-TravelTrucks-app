@@ -1,4 +1,4 @@
-/* Container for the catalog and sidebar */
+/* Контейнер для каталогу і бічної панелі */
 .container {
   display: flex;
   justify-content: space-between;
@@ -7,13 +7,28 @@
   color: var(--main);
 }
 
-/* Sidebar styling */
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    padding: 24px;
+  }
+}
+
+/* Сайдбар */
 .sidebar {
   width: 360px;
   background-color: #f7f7f7;
   padding: 24px;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    margin-bottom: 24px;
+  }
 }
 
 /* Location input */
@@ -35,13 +50,14 @@
   font-size: 14px;
 }
 
+/* Заголовок фільтру */
 .filterTitle {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 16px;
 }
 
-/* Vehicle Equipment filter */
+/* Фільтри за обладнанням */
 .vehicleEquipment {
   display: flex;
   flex-wrap: wrap;
@@ -66,10 +82,10 @@
 .icon {
   width: 24px;
   height: 24px;
-  fill: var(--main); /* Icon color */
+  fill: var(--main); /* Колір іконки */
 }
 
-/* Vehicle Type */
+/* Тип авто */
 .vehicleType {
   margin-bottom: 24px;
 }
@@ -84,6 +100,7 @@
   margin-right: 8px;
 }
 
+/* Кнопка пошуку */
 .searchButton {
   background-color: var(--button);
   color: white;
@@ -98,10 +115,15 @@
   background-color: var(--button-hover);
 }
 
-/* Camper List styling */
+/* Список кемперів */
 .campersList {
   flex: 1;
-  margin-left: 64px;
+}
+
+@media (max-width: 768px) {
+  .campersList {
+    margin-left: 0;
+  }
 }
 
 .campersList ul {
@@ -117,15 +139,30 @@
   padding: 16px;
   margin-bottom: 32px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  flex-direction: column; /* Вертикальний вигляд для адаптивності */
+}
+
+@media (min-width: 768px) {
+  .camperItem {
+    flex-direction: row; /* Горизонтальний вигляд для більших екранів */
+  }
 }
 
 .camperImage {
-  width: 240px;
-  height: 180px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
   border-radius: 8px;
 }
 
+@media (min-width: 768px) {
+  .camperImage {
+    width: 240px;
+    height: 180px;
+  }
+}
+
+/* Деталі кемпера */
 .camperDetails {
   flex: 1;
 }
@@ -166,10 +203,12 @@
   color: #4b5563;
 }
 
+/* Значки обладнання */
 .equipmentBadges {
   display: flex;
   gap: 8px;
   margin-top: 12px;
+  flex-wrap: wrap;
 }
 
 .equipmentBadge {
@@ -188,16 +227,29 @@
   fill: #9ca3af;
 }
 
+/* Кнопка "Показати більше" */
 .showMoreButton {
   background-color: var(--button);
   color: white;
-  padding: 8px 16px;
-  border-radius: 8px;
+  padding: 16px 60px;
+  border-radius: 200px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  margin-top: 24px;
+  width: 166px;
+  height: 56px;
 }
 
 .showMoreButton:hover {
   background-color: var(--button-hover);
+}
+
+/* Адаптивність для кнопки */
+@media (max-width: 768px) {
+  .showMoreButton {
+    margin-top: auto;
+    width: 100%;
+    height: auto;
+  }
 }

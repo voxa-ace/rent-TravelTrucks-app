@@ -1,5 +1,8 @@
 /* Navbar container styles */
 .navbar {
+  border-bottom: 1px solid #f2f4f7;
+padding: 24px 64px;
+height: 72px;
   display: flex;
   /* width: 100%; */
   background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
@@ -34,11 +37,13 @@
 
 /* Individual link styling */
 .navLinks a {
-  text-decoration: none;
-  color: #101828; /* Match Figma color */
+  font-family: "Inter", sans-serif;
   font-weight: 500;
-  font-size: 16px; /* Match Figma typography */
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: center;
+  color: #101828;
+  text-decoration: none;
 }
 
 /* Remove margins/padding that might cause horizontal overflow */
