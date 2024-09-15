@@ -1,0 +1,35 @@
+/* Стилі для контейнера з картками кемперів */
+.cardsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрування елементів, включно з кнопкою */
+  gap: 20px; /* Відстань між картками */
+}
+
+/* Стилі для кнопки Load More */
+.loadMoreButtonContainer {
+  display: flex;
+  justify-content: center; /* Центруємо кнопку */
+  margin-top: 40px; /* Відступ між кнопкою і картками */
+}
+
+.loadMoreButton {
+  background-color: white;
+  border: 1px solid #dadde1;
+  border-radius: 200px;
+  padding: 16px 32px;
+  width: 145px;
+  height: 56px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  color: #475467;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.loadMoreButton:hover {
+  background-color: #D84343;
+  color: white;
+}

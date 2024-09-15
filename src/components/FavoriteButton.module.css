@@ -2,13 +2,14 @@
   width: 25px;
   height: 24px;
   cursor: pointer;
-  margin-left: 13px; /* Контрольоване відступання від ціни */
+  margin-left: 13px; /* Контрольований відступ від ціни */
   display: flex;
   align-items: center;
+  transition: transform 0.3s ease, fill 0.3s ease; /* Додаємо плавний перехід для ефекту ховера */
 }
 
-.favoriteButton svg {
-  width: 25px;
-  height: 24px;
-  fill: currentColor;
+/* Ефект ховера */
+.favoriteButton:hover {
+  transform: scale(1.1); /* Збільшуємо іконку на 10% при наведенні */
+  fill: #D84343; /* Змінюємо колір на червоний при наведенні */
 }

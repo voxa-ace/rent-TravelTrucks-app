@@ -26,7 +26,7 @@ const FavoriteButton = ({ camperId }) => {
 
   return (
     <svg
-      className={styles.favoriteIcon}
+      className={styles.favoriteButton} // Використовуємо правильний клас для стилізації
       onClick={handleFavoriteClick}
       width="25"
       height="24"

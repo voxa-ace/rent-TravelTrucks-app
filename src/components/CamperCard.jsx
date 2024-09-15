@@ -64,7 +64,7 @@ const CamperCard = ({ camper }) => {
           </div>
         </div>
 
-        {/* Статичний опис */}
+        {/* Опис */}
         <p className={styles.description}>
           Embrace simplicity and freedom with the Mavericks panel truck...
         </p>
@@ -72,7 +72,7 @@ const CamperCard = ({ camper }) => {
         {/* Значки обладнання */}
         <div className={styles.equipment}>
           {/* Трансмісія */}
-          <div className={`${styles.equipmentBadge} ${styles.filterText}`}>
+          <div className={styles.equipmentBadge}>
             <svg className={styles.icon}>
               <use href={`${spriteUrl}#${transmissionIconId}`} />
             </svg>
@@ -81,7 +81,7 @@ const CamperCard = ({ camper }) => {
 
           {/* Інші фільтри */}
           {activeFeatures.map((feature) => (
-            <div key={feature} className={`${styles.equipmentBadge} ${styles.filterText}`}>
+            <div key={feature} className={styles.equipmentBadge}>
               <svg className={styles.icon}>
                 <use href={`${spriteUrl}#${equipmentIcons[feature]}`} />
               </svg>
@@ -90,11 +90,11 @@ const CamperCard = ({ camper }) => {
           ))}
 
           {/* Паливо */}
-          <div className={`${styles.equipmentBadge} ${styles.filterText}`}>
+          <div className={styles.equipmentBadge}>
             <svg className={styles.icon}>
               <use href={`${spriteUrl}#icon-tanker`} />
             </svg>
-            <span>{engineType}</span> {/* Відображаємо тип двигуна */}
+            <span>{engineType}</span>
           </div>
         </div>
 
