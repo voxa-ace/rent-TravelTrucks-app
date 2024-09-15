@@ -1,0 +1,14 @@
+.favoriteButton {
+  width: 25px;
+  height: 24px;
+  cursor: pointer;
+  margin-left: 13px; /* Контрольоване відступання від ціни */
+  display: flex;
+  align-items: center;
+}
+
+.favoriteButton svg {
+  width: 25px;
+  height: 24px;
+  fill: currentColor;
+}
