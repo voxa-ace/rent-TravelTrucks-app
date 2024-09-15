@@ -1,12 +1,17 @@
 import React from 'react';
 import styles from './CamperCard.module.css';
+import spriteUrl from '../assets/icons/symbol-defs.svg?url';
 
 const CamperCard = ({ camper }) => {
+  console.log(camper); // Перевірка отриманих даних
+
   if (!camper || !camper.gallery || camper.gallery.length === 0) {
     return null;
   }
 
-  // Мапа для значків фільтрів (ключі відповідають даним з бекенду)
+  const reviewsCount = Array.isArray(camper.reviews) ? camper.reviews.length : 0;
+
+  // Мапа для ідентифікаторів іконок
   const equipmentIcons = {
     AC: 'ac',
     bathroom: 'bathroom',
@@ -14,8 +19,9 @@ const CamperCard = ({ camper }) => {
     TV: 'tv',
   };
 
-  // Трансмісія (automatic/manual)
+  // Отримуємо назву трансмісії та ідентифікатор іконки
   const transmissionLabel = camper.transmission === 'automatic' ? 'Automatic' : 'Manual';
+  const transmissionIconId = 'automatic'; // Використовуємо ту саму іконку для обох
 
   // Відображаємо тільки ті фільтри, які є true
   const activeFeatures = Object.keys(equipmentIcons).filter((key) => camper[key]);
@@ -38,13 +44,23 @@ const CamperCard = ({ camper }) => {
           <span className={styles.price}>€{camper.price},00</span>
         </div>
         <div className={styles.ratingLocation}>
-          <span className={styles.rating}>
-            ★ {camper.rating} ({camper.reviews.length} Reviews)
-          </span>
-          <span className={styles.location}>{camper.location}</span>
+          <div className={styles.rating}>
+            <svg className={styles.starIcon}>
+              <use href={`${spriteUrl}#icon-star-pressed`} />
+            </svg>
+            <span className={styles.ratingAndReviews}>
+              {camper.rating} ({reviewsCount} Reviews)
+            </span>
+          </div>
+          <div className={styles.locationContainer}>
+            <svg className={styles.locationIcon}>
+              <use href={`${spriteUrl}#icon-map`} />
+            </svg>
+            <span className={styles.location}>{camper.location}</span>
+          </div>
         </div>
 
-        {/* Статичний текст замість опису */}
+        {/* Статичний опис */}
         <p className={styles.description}>
           Embrace simplicity and freedom with the Mavericks panel truck...
         </p>
@@ -52,20 +68,20 @@ const CamperCard = ({ camper }) => {
         {/* Значки обладнання */}
         <div className={styles.equipment}>
           {/* Трансмісія */}
-          <div className={styles.equipmentBadge}>
+          <div className={`${styles.equipmentBadge} ${styles.filterText}`}>
             <svg className={styles.icon}>
-              <use href={`/assets/icons/symbol-defs.svg#${camper.transmission}`} />
+              <use href={`${spriteUrl}#${transmissionIconId}`} />
             </svg>
             <span>{transmissionLabel}</span>
           </div>
 
           {/* Інші фільтри */}
           {activeFeatures.map((feature) => (
-            <div key={feature} className={styles.equipmentBadge}>
+            <div key={feature} className={`${styles.equipmentBadge} ${styles.filterText}`}>
               <svg className={styles.icon}>
-                <use href={`/assets/icons/symbol-defs.svg#${equipmentIcons[feature]}`} />
+                <use href={`${spriteUrl}#${equipmentIcons[feature]}`} />
               </svg>
-              <span>{equipmentIcons[feature]}</span>
+              <span>{feature}</span>
             </div>
           ))}
         </div>
