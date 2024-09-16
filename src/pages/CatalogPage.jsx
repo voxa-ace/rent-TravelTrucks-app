@@ -1,8 +1,10 @@
+// CatalogPage.jsx
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCampers } from '../store/slices/campersSlice';
 import FilterSection from '../components/FilterSection';
 import CamperCard from '../components/CamperCard';
+import LoadMoreButton from '../components/LoadMoreButton';  // Імпортуємо компонент кнопки
 import styles from './CatalogPage.module.css';
 
 const CatalogPage = () => {
@@ -51,9 +53,7 @@ const CatalogPage = () => {
               <CamperCard key={camper.id} camper={camper} />
             ))}
             {filteredCampers.length > visibleCount && (
-              <button onClick={handleLoadMore} className={styles.loadMoreButton}>
-                Load More
-              </button>
+              <LoadMoreButton onClick={handleLoadMore} /> 
             )}
           </>
         ) : (

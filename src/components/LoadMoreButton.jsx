@@ -1,5 +1,6 @@
+// LoadMoreButton.jsx
 import React from 'react';
-import styles from './LoadMoreButton.module.css'; // Можна додати в окремий файл стилів або зберегти в тому самому
+import styles from './LoadMoreButton.module.css';
 
 const LoadMoreButton = ({ onClick }) => {
   return (

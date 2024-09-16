@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './Navbar.module.css'; // Importing the CSS module for Navbar
+import { NavLink } from 'react-router-dom'; // Use NavLink for active links
+import styles from './Navbar.module.css';
 import Logo from '../assets/icons/logo.svg'; // Assuming your SVG logo file is in this path
 
 const Navbar = () => {
@@ -8,8 +8,26 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <img src={Logo} alt="TravelTrucks Logo" className={styles.logo} />
       <ul className={styles.navLinks}>
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/catalog">Catalog</Link></li>
+        <li>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive ? styles.activeLink : styles.navLink
+            }
+          >
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to="/catalog"
+            className={({ isActive }) =>
+              isActive ? styles.activeLink : styles.navLink
+            }
+          >
+            Catalog
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

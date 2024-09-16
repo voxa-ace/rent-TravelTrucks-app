@@ -1,4 +1,5 @@
 import React from 'react';
+import spriteUrl from '../assets/icons/symbol-defs.svg?url';
 import styles from './FilterSection.module.css';
 
 const FilterSection = ({ selectedFilters, setSelectedFilters }) => {
@@ -29,13 +30,18 @@ const FilterSection = ({ selectedFilters, setSelectedFilters }) => {
     <div className={styles.sidebar}>
       <div className={styles.locationContainer}>
         <p className={styles.locationLabel}>Location</p>
-        <input
-          type="text"
-          placeholder="Enter location"
-          value={selectedFilters.location}
-          onChange={handleLocationChange}
-          className={styles.locationInput}
-        />
+        <div className={styles.inputWrapper}>
+          <svg className={styles.locationIcon}>
+            <use href={`${spriteUrl}#icon-map`} />
+          </svg>
+          <input
+            type="text"
+            placeholder="City"
+            value={selectedFilters.location}
+            onChange={handleLocationChange}
+            className={styles.locationInput}
+          />
+        </div>
       </div>
 
       <p className={styles.filterTitle}>Filters</p>
