@@ -20,7 +20,7 @@ const CamperCard = ({ camper }) => {
 
   // Отримуємо назву трансмісії та ідентифікатор іконки
   const transmissionLabel = camper.transmission === 'automatic' ? 'Automatic' : 'Manual';
-  const transmissionIconId = 'icon-automatic'; // Використовуємо іконку для трансмісії
+  const transmissionIconId = camper.transmission === 'automatic' ? 'icon-automatic' : 'icon-manual'; 
 
   // Отримуємо тип двигуна
   const engineType = camper.engine || 'Unknown'; // Беремо тип двигуна з бекенду

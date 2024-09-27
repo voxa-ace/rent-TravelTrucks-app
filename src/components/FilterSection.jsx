@@ -3,6 +3,7 @@ import spriteUrl from '../assets/icons/symbol-defs.svg?url';
 import styles from './FilterSection.module.css';
 
 const FilterSection = ({ selectedFilters, setSelectedFilters }) => {
+  // Обробка зміни локації
   const handleLocationChange = (event) => {
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
@@ -10,6 +11,7 @@ const FilterSection = ({ selectedFilters, setSelectedFilters }) => {
     }));
   };
 
+  // Обробка зміни обладнання
   const handleEquipmentChange = (equipment) => {
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
@@ -19,12 +21,19 @@ const FilterSection = ({ selectedFilters, setSelectedFilters }) => {
     }));
   };
 
-  const handleVehicleTypeChange = (event) => {
+  // Обробка зміни типу авто
+  const handleVehicleTypeChange = (vehicleType) => {
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
-      vehicleType: event.target.value,
+      vehicleType,
     }));
   };
+
+  // Визначення вибраного фільтру
+  const isSelected = (equipment) => selectedFilters.equipment.includes(equipment);
+
+  // Визначення вибраного типу авто
+  const isVehicleTypeSelected = (type) => selectedFilters.vehicleType === type;
 
   return (
     <div className={styles.sidebar}>
@@ -46,57 +55,42 @@ const FilterSection = ({ selectedFilters, setSelectedFilters }) => {
 
       <p className={styles.filterTitle}>Filters</p>
 
+      <p className={styles.vehicleEquipmentTitle}>Vehicle Equipment</p>
+      <div className={styles.divider}></div>
+
       <div className={styles.vehicleEquipment}>
         {['AC', 'Automatic', 'Kitchen', 'TV', 'Bathroom'].map((equip) => (
           <div
             key={equip}
-            className={`${styles.filterItem} ${
-              selectedFilters.equipment.includes(equip) ? styles.selected : ''
-            }`}
+            className={`${styles.filterItem} ${isSelected(equip) ? styles.selected : ''}`}
             onClick={() => handleEquipmentChange(equip)}
           >
-            <input
-              type="checkbox"
-              checked={selectedFilters.equipment.includes(equip)}
-              onChange={() => handleEquipmentChange(equip)}
-            />
+            <input type="checkbox" checked={isSelected(equip)} readOnly />
+            <svg className={styles.icon}>
+              <use href={`${spriteUrl}#icon-${equip.toLowerCase()}`} />
+            </svg>
             <p>{equip}</p>
           </div>
         ))}
       </div>
 
-      <div className={styles.vehicleType}>
-        <p className={styles.vehicleTypeTitle}>Vehicle Type</p>
-        <label>
-          <input
-            type="radio"
-            name="vehicleType"
-            value="van"
-            checked={selectedFilters.vehicleType === 'van'}
-            onChange={handleVehicleTypeChange}
-          />
-          Van
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="vehicleType"
-            value="fully-integrated"
-            checked={selectedFilters.vehicleType === 'fully-integrated'}
-            onChange={handleVehicleTypeChange}
-          />
-          Fully Integrated
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="vehicleType"
-            value="alcove"
-            checked={selectedFilters.vehicleType === 'alcove'}
-            onChange={handleVehicleTypeChange}
-          />
-          Alcove
-        </label>
+      <p className={styles.vehicleTypeTitle}>Vehicle Type</p>
+      <div className={styles.divider}></div>
+
+      <div className={styles.vehicleTypeGroup}>
+        {['van', 'fully-integrated', 'alcove'].map((type) => (
+          <div
+            key={type}
+            className={`${styles.filterItem} ${isVehicleTypeSelected(type) ? styles.selected : ''}`}
+            onClick={() => handleVehicleTypeChange(type)}
+          >
+            <input type="radio" name="vehicleType" checked={isVehicleTypeSelected(type)} readOnly />
+            <svg className={styles.icon}>
+              <use href={`${spriteUrl}#icon-${type.replace(' ', '-')}`} />
+            </svg>
+            <p>{type.charAt(0).toUpperCase() + type.slice(1)}</p>
+          </div>
+        ))}
       </div>
     </div>
   );
