@@ -3,6 +3,9 @@
   width: 360px;
   padding: 24px;
   font-family: var(--font-family);
+  box-sizing: border-box; /* Ensures padding is considered inside the width */
+  display: flex;
+  flex-direction: column;
 }
 
 /* Контейнер для введення локації */
@@ -44,6 +47,7 @@
   font-size: 14px;
   background-color: #f9fafb;
   color: #101828;
+  box-sizing: border-box; /* Makes sure input width respects the container */
 }
 
 .locationInput::placeholder {
@@ -69,7 +73,7 @@
 .divider {
   width: 100%;
   height: 1px;
-  background-color: var(--gray-light);
+  background-color: #DADDE1;
   margin: 24px 0;
 }
 
@@ -77,9 +81,10 @@
 .vehicleEquipment,
 .vehicleTypeGroup {
   display: grid;
-  grid-template-columns: repeat(3, 112px);
+  grid-template-columns: repeat(3, 1fr); /* Responsive columns that fit */
   gap: 16px;
   margin-bottom: 32px;
+  width: 100%; /* Ensures filters stay within container width */
 }
 
 /* Основний блок для фільтра */
@@ -94,9 +99,11 @@
   border-radius: 8px;
   border: 1px solid #DADDE1;
   cursor: pointer;
-  width: 112px;
+  width: 100%;
+  max-width: 112px; /* Ensures consistent sizing */
   height: 96px;
   transition: border-color 0.3s ease;
+  box-sizing: border-box;
 }
 
 /* Якщо чекбокс або радіо вибраний */
@@ -122,6 +129,7 @@
   line-height: 120%;
   color: var(--main);
   text-align: center;
+  word-wrap: break-word; /* Ensures text breaks to new lines when too long */
 }
 
 /* Кнопка пошуку */
