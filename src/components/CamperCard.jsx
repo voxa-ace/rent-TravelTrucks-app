@@ -2,6 +2,8 @@ import React from 'react';
 import styles from './CamperCard.module.css';
 import spriteUrl from '../assets/icons/symbol-defs.svg?url';
 import FavoriteButton from './FavoriteButton';  // Імпортуємо компонент
+import SVG from 'react-inlinesvg';
+
 
 const CamperCard = ({ camper }) => {
   if (!camper || !camper.gallery || camper.gallery.length === 0) {
@@ -49,17 +51,29 @@ const CamperCard = ({ camper }) => {
         
         <div className={styles.ratingLocation}>
           <div className={styles.rating}>
-            <svg className={styles.starIcon}>
+          <SVG
+            src="../../public/assets/icons/star_pressed.svg"
+            width={16}
+            height="auto"
+            title="React"
+          />
+            {/* <svg className={styles.starIcon}>
               <use href={`${spriteUrl}#icon-star-pressed`} />
-            </svg>
+            </svg> */}
             <span className={styles.ratingAndReviews}>
               {camper.rating} ({reviewsCount} {reviewsCount === 1 ? 'Review' : 'Reviews'})
             </span>
           </div>
           <div className={styles.locationContainer}>
-            <svg className={styles.locationIcon}>
+          <SVG
+            src="../../public/assets/icons/map.svg"
+            width={16}
+            height="auto"
+            title="React"
+          />
+            {/* <svg className={styles.locationIcon}>
               <use href={`${spriteUrl}#icon-map`} />
-            </svg>
+            </svg> */}
             <span className={styles.location}>{camper.location}</span>
           </div>
         </div>
@@ -73,27 +87,45 @@ const CamperCard = ({ camper }) => {
         <div className={styles.equipment}>
           {/* Трансмісія */}
           <div className={styles.equipmentBadge}>
-            <svg className={styles.icon}>
+          <SVG
+            src="../../public/assets/icons/automatic.svg"
+            width={20}
+            height="auto"
+            title="React"
+          />
+            {/* <svg className={styles.icon}>
               <use href={`${spriteUrl}#${transmissionIconId}`} />
-            </svg>
+            </svg> */}
             <span>{transmissionLabel}</span>
           </div>
 
           {/* Інші фільтри */}
           {activeFeatures.map((feature) => (
             <div key={feature} className={styles.equipmentBadge}>
-              <svg className={styles.icon}>
+              <SVG
+            src="../../public/assets/icons/star_pressed.svg"
+            width={16}
+            height="auto"
+            title="React"
+          />
+              {/* <svg className={styles.icon}>
                 <use href={`${spriteUrl}#${equipmentIcons[feature]}`} />
-              </svg>
+              </svg> */}
               <span>{feature}</span>
             </div>
           ))}
 
           {/* Паливо */}
           <div className={styles.equipmentBadge}>
-            <svg className={styles.icon}>
+          <SVG
+            src="../../public/assets/icons/fuel.svg"
+            width={16}
+            height="auto"
+            title="React"
+          />
+            {/* <svg className={styles.icon}>
               <use href={`${spriteUrl}#icon-tanker`} />
-            </svg>
+            </svg> */}
             <span>{engineType}</span>
           </div>
         </div>
