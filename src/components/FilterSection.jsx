@@ -25,7 +25,7 @@ const FilterSection = ({ selectedFilters, setSelectedFilters }) => {
   const handleVehicleTypeChange = (vehicleType) => {
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
-      vehicleType,
+      vehicleType: prevFilters.vehicleType !== vehicleType ? vehicleType: ""
     }));
   };
 

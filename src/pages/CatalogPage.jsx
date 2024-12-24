@@ -7,6 +7,11 @@ import CamperCard from '../components/CamperCard';
 import LoadMoreButton from '../components/LoadMoreButton';  // Імпортуємо компонент кнопки
 import styles from './CatalogPage.module.css';
 
+const vehicleTypes = {
+  "van": "panelTruck", 
+  "fully-integrated": "fullyIntegrated",
+  "alcove": "alcove"
+}
 const CatalogPage = () => {
   const dispatch = useDispatch();
   const { campersList, status, error } = useSelector((state) => state.campers);
@@ -24,21 +29,24 @@ const CatalogPage = () => {
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 4);
   };
-
   const filteredCampers = campersList?.items?.filter((camper) => {
     const matchesLocation = selectedFilters.location
       ? camper.location.toLowerCase().includes(selectedFilters.location.toLowerCase())
       : true;
-    const matchesEquipment = selectedFilters.equipment.every((equip) =>
-      camper.equipment.includes(equip)
-    );
+    const matchesEquipment = selectedFilters.equipment.every((equip) => {
+      const updateEquip = equip.toLowerCase()
+      if (updateEquip === "automatic") {
+        return camper.transmission === updateEquip
+      }
+      
+      return camper[equip] || camper[updateEquip]
+  });
     const matchesVehicleType = selectedFilters.vehicleType
-      ? camper.bodyType === selectedFilters.vehicleType
+      ? camper.form === vehicleTypes[selectedFilters.vehicleType]
       : true;
-    return matchesLocation && matchesEquipment && matchesVehicleType;
+    return matchesEquipment && matchesLocation && matchesVehicleType;
   }) || [];
-
-  return (
+    return (
     <div className={styles.container}>
       <FilterSection
         selectedFilters={selectedFilters}

@@ -27,8 +27,7 @@ const CamperDetailPage = () => {
         <div>
           <h2>{camperDetail.name}</h2>
           <p>{camperDetail.description}</p>
-          <p>Price per day: ${camperDetail.price}</p>
-          {/* Тут ти можеш додати більше полів за потреби */}
+          <p>{camperDetail.price}</p>
         </div>
       ) : (
         <p>No details available</p>

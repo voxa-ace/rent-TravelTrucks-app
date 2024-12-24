@@ -1,0 +1,107 @@
+.camper-detail {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.camper-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.camper-title {
+  font-size: 2rem;
+  color: #101828;
+}
+
+.camper-location {
+  color: #475467;
+}
+
+.camper-price {
+  color: #e44848;
+  font-size: 1.5rem;
+  margin-top: 10px;
+}
+
+.camper-gallery {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.gallery-image {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.camper-description {
+  margin: 20px 0;
+}
+
+.camper-features, .camper-specifications, .camper-reviews, .camper-booking {
+  margin: 20px 0;
+}
+
+.features-list, .review-item {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.feature-item {
+  background-color: #dadde1;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.review-item {
+  background-color: #f7f7f7;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.booking-form label {
+  margin-bottom: 10px;
+}
+
+.booking-form input, .booking-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+}
+
+.booking-form button {
+  background-color: #e44848;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.camperGallery {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.galleryImage {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.noGallery {
+  font-size: 1rem;
+  color: #666;
+}

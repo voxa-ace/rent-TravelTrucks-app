@@ -1,9 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './CamperCard.module.css';
-import spriteUrl from '../assets/icons/symbol-defs.svg?url';
 import FavoriteButton from './FavoriteButton';  // Імпортуємо компонент
 import SVG from 'react-inlinesvg';
-
 
 const CamperCard = ({ camper }) => {
   if (!camper || !camper.gallery || camper.gallery.length === 0) {
@@ -29,6 +28,8 @@ const CamperCard = ({ camper }) => {
 
   // Відображаємо тільки ті фільтри, які є true
   const activeFeatures = Object.keys(equipmentIcons).filter((key) => camper[key]);
+  console.log(activeFeatures)
+  console.log(camper.name)
 
   return (
     <div className={styles.card}>
@@ -51,29 +52,23 @@ const CamperCard = ({ camper }) => {
         
         <div className={styles.ratingLocation}>
           <div className={styles.rating}>
-          <SVG
-            src="../../public/assets/icons/star_pressed.svg"
-            width={16}
-            height="auto"
-            title="React"
-          />
-            {/* <svg className={styles.starIcon}>
-              <use href={`${spriteUrl}#icon-star-pressed`} />
-            </svg> */}
+            <SVG
+              src="../../public/assets/icons/star_pressed.svg"
+              width={16}
+              height="100%"
+              title="Rating"
+            />
             <span className={styles.ratingAndReviews}>
               {camper.rating} ({reviewsCount} {reviewsCount === 1 ? 'Review' : 'Reviews'})
             </span>
           </div>
           <div className={styles.locationContainer}>
-          <SVG
-            src="../../public/assets/icons/map.svg"
-            width={16}
-            height="auto"
-            title="React"
-          />
-            {/* <svg className={styles.locationIcon}>
-              <use href={`${spriteUrl}#icon-map`} />
-            </svg> */}
+            <SVG
+              src="../../public/assets/icons/map.svg"
+              width={16}
+              height="100%"
+              title="Location"
+            />
             <span className={styles.location}>{camper.location}</span>
           </div>
         </div>
@@ -87,15 +82,12 @@ const CamperCard = ({ camper }) => {
         <div className={styles.equipment}>
           {/* Трансмісія */}
           <div className={styles.equipmentBadge}>
-          <SVG
-            src="../../public/assets/icons/automatic.svg"
-            width={20}
-            height="auto"
-            title="React"
-          />
-            {/* <svg className={styles.icon}>
-              <use href={`${spriteUrl}#${transmissionIconId}`} />
-            </svg> */}
+            <SVG
+              src="../../public/assets/icons/automatic.svg"
+              width={20}
+              height="100%"
+              title="Transmission"
+            />
             <span>{transmissionLabel}</span>
           </div>
 
@@ -103,36 +95,32 @@ const CamperCard = ({ camper }) => {
           {activeFeatures.map((feature) => (
             <div key={feature} className={styles.equipmentBadge}>
               <SVG
-            src="../../public/assets/icons/star_pressed.svg"
-            width={16}
-            height="auto"
-            title="React"
-          />
-              {/* <svg className={styles.icon}>
-                <use href={`${spriteUrl}#${equipmentIcons[feature]}`} />
-              </svg> */}
-              <span>{feature}</span>
+                src={`../../public/assets/icons/${feature}.svg`}
+                width={16}
+                height="100%"
+                title={feature}
+              />
+              <span>{feature[0].toUpperCase() + feature.slice(1)}</span>
             </div>
           ))}
 
           {/* Паливо */}
           <div className={styles.equipmentBadge}>
-          <SVG
-            src="../../public/assets/icons/fuel.svg"
-            width={16}
-            height="auto"
-            title="React"
-          />
-            {/* <svg className={styles.icon}>
-              <use href={`${spriteUrl}#icon-tanker`} />
-            </svg> */}
-            <span>{engineType}</span>
+            <SVG
+              src="../../public/assets/icons/fuel.svg"
+              width={16}
+              height="100%"
+              title="Fuel"
+            />
+            <span>{engineType[0].toUpperCase() + engineType.slice(1)}</span>
           </div>
         </div>
 
         {/* Кнопка */}
         <div className={styles.buttonContainer}>
-          <button className={styles.showMoreButton}>Show more</button>
+          <Link to={`/catalog/${camper.id}`} className={styles.showMoreButton}>
+            Show more
+          </Link>
         </div>
       </div>
     </div>
