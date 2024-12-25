@@ -101,7 +101,7 @@
 }
 
 /* Кнопка пошуку */
-.searchButton {
+/* .searchButton {
   background-color: var(--button);
   color: white;
   padding: 12px 24px;
@@ -113,7 +113,7 @@
 
 .searchButton:hover {
   background-color: var(--button-hover);
-}
+} */
 
 /* Список кемперів */
 .campersList {
@@ -228,7 +228,7 @@
 }
 
 /* Кнопка "Показати більше" */
-.showMoreButton {
+/* .showMoreButton {
   background-color: var(--button);
   color: white;
   padding: 16px 60px;
@@ -239,11 +239,11 @@
   margin-top: 24px;
   width: 166px;
   height: 56px;
-}
+} */
 
-.showMoreButton:hover {
+/* .showMoreButton:hover {
   background-color: var(--button-hover);
-}
+} */
 
 /* Адаптивність для кнопки */
 @media (max-width: 768px) {
@@ -255,31 +255,3 @@
 }
 
 /* Контейнер для кнопки Load More */
-.loadMoreButtonContainer {
-  display: flex;
-  justify-content: center; /* Центруємо кнопку горизонтально */
-  margin-top: 56px; /* Відступ між останньою карткою і кнопкою */
-}
-
-/* Стилі для кнопки Load More */
-.loadMoreButton {
-  background-color: white;
-  border: 1px solid #dadde1;
-  border-radius: 200px;
-  padding: 16px 32px;
-  width: 145px;
-  height: 56px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  color: var(--Main, #101828); /* Встановлюємо колір відповідно до макету */
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.08px;
-}
-
-.loadMoreButton:hover {
-  background-color: #D84343;
-  color: white;
-}

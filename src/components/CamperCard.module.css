@@ -183,37 +183,12 @@
   transition: background-color 0.3s ease;
   font-size: 16px;
   line-height: 1;
+  text-decoration: none;
 }
 
 .showMoreButton:hover {
   background-color: #D84343; /* Updated to swap colors */
 }
 
-/* Load More Button */
-.loadMoreButtonContainer {
-  display: flex;
-  justify-content: center; /* Centering the button horizontally */
-  margin-top: 40px; /* Space between the last card and the button */
-}
 
-.loadMoreButton {
-  background-color: white;
-  border: 1px solid #D84343; /* Set to hover color as requested */
-  border-radius: 200px;
-  padding: 16px 32px;
-  width: 145px;
-  height: 56px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  color: var(--Main, #101828); /* Setting the text color to main color */
-  font-family: "Inter", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  letter-spacing: -0.08px;
-}
 
-.loadMoreButton:hover {
-  background-color: #D84343; /* Changing hover color */
-  color: white; /* Text color turns white on hover */
-}

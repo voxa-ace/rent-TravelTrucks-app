@@ -14,7 +14,7 @@
   width: 145px;
   height: 56px;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease, border 0.3s ease;
   color: var(--Main, #101828); /* Встановлюємо колір тексту */
   font-family: "Inter", sans-serif;
   font-weight: 500;
@@ -23,10 +23,11 @@
   letter-spacing: -0.08px;
 }
 
-/* Ховер-ефект, який міняє лише фон на червоний */
+/* Ховер-ефект, який міняє лише бордер */
 .loadMoreButton:hover {
-  background-color: #D84343;
-  color: white;
+  background-color: white; /* Фон залишається білим */
+  border: 1px solid #D84343; /* Змінюємо бордер на червоний */
+  color: var(--Main, #101828); /* Колір тексту залишається */
 }
 
 /* Фокус та активний стан, щоб кнопка залишалась білою після кліку */

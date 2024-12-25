@@ -1,107 +1,114 @@
-.camper-detail {
-  padding: 20px;
-  font-family: Arial, sans-serif;
+/* Контейнер для фото кемпера */
+.imageContainer {
+  flex: 0 0 292px;
+  height: 320px;
+  margin-right: 24px;
 }
 
-.camper-header {
-  text-align: center;
-  margin-bottom: 20px;
+.camperImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-.camper-title {
-  font-size: 2rem;
+.images {
+  display: flex;
+  column-gap: 20px;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* Назва авто */
+.camperTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333; /* Еквівалентно 32px */
+  color: #101828;
+  margin-right: 24px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Контейнер для ціни і лайка */
+.priceLikeContainer {
+  display: flex;
+  align-items: center;
+  gap: 13px; /* Відстань між ціною і лайком */
+}
+
+/* Стиль для ціни */
+.price {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: var(--main);
+}
+
+/* Рейтинг та локація */
+.ratingLocation {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* Іконка зірочки */
+.starIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  fill: currentColor;
   color: #101828;
 }
 
-.camper-location {
-  color: #475467;
-}
-
-.camper-price {
-  color: #e44848;
-  font-size: 1.5rem;
-  margin-top: 10px;
-}
-
-.camper-gallery {
-  display: flex;
-  gap: 10px;
-  margin: 20px 0;
-}
-
-.gallery-image {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
-}
-
-.camper-description {
-  margin: 20px 0;
-}
-
-.camper-features, .camper-specifications, .camper-reviews, .camper-booking {
-  margin: 20px 0;
-}
-
-.features-list, .review-item {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.feature-item {
-  background-color: #dadde1;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.review-item {
-  background-color: #f7f7f7;
-  padding: 15px;
-  border-radius: 5px;
-}
-
-.booking-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.booking-form label {
-  margin-bottom: 10px;
-}
-
-.booking-form input, .booking-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: 1px solid #dadde1;
-  border-radius: 5px;
-}
-
-.booking-form button {
-  background-color: #e44848;
-  color: white;
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
+/* Рейтинг та відгуки */
+.ratingAndReviews {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
+  text-decoration: underline;
   cursor: pointer;
 }
 
-.camperGallery {
+/* Локація */
+.locationContainer {
   display: flex;
-  gap: 10px;
-  margin: 20px 0;
+  align-items: center;
+  margin-left: 16px;
 }
 
-.galleryImage {
-  width: 150px;
-  height: 100px;
-  object-fit: cover;
-  border-radius: 5px;
+.locationIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  fill: currentColor;
+  color: #667085;
 }
 
-.noGallery {
-  font-size: 1rem;
-  color: #666;
+.location {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #101828;
+}
+
+.description {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #475467;
+  margin: 28px 0 60px;
 }
