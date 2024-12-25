@@ -24,7 +24,7 @@ const CamperDetailPage = () => {
   }
 
   return (
-    <div>
+    <div className={styles.detailPageContainer}>
       {camperDetail ? (
         <div>
           <div className={styles.headerContainer}>
@@ -69,11 +69,58 @@ const CamperDetailPage = () => {
               </div>
             ))}
           </div>
-          <div className={styles.description}>
-            {camperDetail.description}
-          </div>
+          <div className={styles.description}>{camperDetail.description}</div>
           <div className={styles.camperDetailBottom}>
-            
+            {/* Vehicle details container */}
+            <div className={styles.vehicleDetails}>
+              <h3>Vehicle details</h3>
+              <div className={styles.vehicleInfo}>
+                <div>
+                  <p>Form</p>
+                  <p>{camperDetail.form}</p>
+                </div>
+                <div>
+                  <p>Length</p>
+                  <p>{camperDetail.length} m</p>
+                </div>
+                <div>
+                  <p>Width</p>
+                  <p>{camperDetail.width} m</p>
+                </div>
+                <div>
+                  <p>Height</p>
+                  <p>{camperDetail.height} m</p>
+                </div>
+                <div>
+                  <p>Tank</p>
+                  <p>{camperDetail.tank} L</p>
+                </div>
+                <div>
+                  <p>Consumption</p>
+                  <p>{camperDetail.consumption} L/100km</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Booking form container */}
+            <div className={styles.bookingForm}>
+              <h3>Book your campervan now</h3>
+              <form>
+                <label htmlFor="name">Name*</label>
+                <input type="text" id="name" name="name" required />
+
+                <label htmlFor="email">Email*</label>
+                <input type="email" id="email" name="email" required />
+
+                <label htmlFor="date">Booking date*</label>
+                <input type="date" id="date" name="date" required />
+
+                <label htmlFor="comment">Comment</label>
+                <textarea id="comment" name="comment" />
+
+                <button type="submit" className={styles.submitButton}>Send</button>
+              </form>
+            </div>
           </div>
         </div>
       ) : (
