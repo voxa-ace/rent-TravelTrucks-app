@@ -1,50 +1,85 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
+import styles from './BookingForm.module.css';
 
-const BookingForm = ({ camperId }) => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [dates, setDates] = useState('');
+const BookingForm = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    date: "",
+    comment: "",
+  });
 
-  const handleBooking = async (e) => {
-    e.preventDefault();
-    try {
-      await axios.post(`https://66b1f8e71ca8ad33d4f5f63e.mockapi.io/campers/${camperId}/bookings`, {
-        name,
-        email,
-        dates,
-      });
-      alert('Booking successful!');
-    } catch (error) {
-      console.error('Error booking camper:', error);
-    }
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  // Handle input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsSubmitted(true);
   };
 
   return (
-    <form onSubmit={handleBooking}>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        placeholder="Your name"
-        required
-      />
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        placeholder="Your email"
-        required
-      />
-      <input
-        type="text"
-        value={dates}
-        onChange={(e) => setDates(e.target.value)}
-        placeholder="Booking dates"
-        required
-      />
-      <button type="submit">Book Now</button>
-    </form>
+    <div className={styles.bookingForm}>
+      <h2>Book your campervan now</h2>
+      <p>Stay connected! We are always ready to help you.</p>
+      {!isSubmitted ? (
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <input
+            id="name"
+            type="text"
+            name="name"
+            placeholder="Name*"
+            required
+            value={formData.name}
+            onChange={handleChange}
+            className={styles.input}
+          />
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="Email*"
+            required
+            value={formData.email}
+            onChange={handleChange}
+            className={styles.input}
+          />
+          <input
+            id="date"
+            type="text"
+            name="date"
+            placeholder="Booking date*"
+            required
+            value={formData.date}
+            onFocus={(e) => (e.target.type = "date")}
+            onBlur={(e) => (e.target.type = "text")}
+            onChange={handleChange}
+            className={styles.input}
+          />
+          <textarea
+            id="comment"
+            name="comment"
+            placeholder="Comment"
+            value={formData.comment}
+            onChange={handleChange}
+            className={styles.textarea}
+          />
+          <div className={styles.buttonContainer}>
+            <button type="submit" className={styles.submitButton}>Send</button>
+          </div>
+        </form>
+      ) : (
+        <p className={styles.formSent}>Form was sent!</p>
+      )}
+    </div>
   );
 };
 

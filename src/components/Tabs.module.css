@@ -1,0 +1,26 @@
+.tabsButtons {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 44px;
+}
+
+.tabsButton {
+  padding: 10px;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: black;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tabsContent {
+  padding: 20px;
+  background-color: #f9f9f9;
+  
+}
+
+.tabsButton:hover,
+.tabsButton:focus {
+  background-color: transparent;
+}

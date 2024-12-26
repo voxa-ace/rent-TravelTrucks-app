@@ -100,22 +100,6 @@
   margin-right: 8px;
 }
 
-/* Кнопка пошуку */
-/* .searchButton {
-  background-color: var(--button);
-  color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.searchButton:hover {
-  background-color: var(--button-hover);
-} */
-
-/* Список кемперів */
 .campersList {
   flex: 1;
 }
@@ -227,24 +211,6 @@
   fill: #9ca3af;
 }
 
-/* Кнопка "Показати більше" */
-/* .showMoreButton {
-  background-color: var(--button);
-  color: white;
-  padding: 16px 60px;
-  border-radius: 200px;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  margin-top: 24px;
-  width: 166px;
-  height: 56px;
-} */
-
-/* .showMoreButton:hover {
-  background-color: var(--button-hover);
-} */
-
 /* Адаптивність для кнопки */
 @media (max-width: 768px) {
   .showMoreButton {
@@ -253,5 +219,3 @@
     height: auto;
   }
 }
-
-/* Контейнер для кнопки Load More */

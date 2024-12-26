@@ -160,6 +160,11 @@
   text-align: right;
 }
 
+.footerDetails {
+  display: flex;
+  column-gap: 48px;
+}
+
 /* Booking form section */
 .bookingForm {
   flex: 1;

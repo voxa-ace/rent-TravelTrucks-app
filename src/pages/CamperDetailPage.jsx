@@ -5,6 +5,10 @@ import { useParams } from "react-router-dom"; // Використовуємо us
 import { fetchCamperById } from "../store/slices/campersSlice"; // Імпортуємо fetchCamperById
 import styles from "./CamperDetailPage.module.css";
 import SVG from "react-inlinesvg";
+import Tabs from "../components/Tabs";
+import BookingForm from "../components/BookingForm";
+import CampDetails from "../components/CampDetails";
+import Reviews from "../components/Reviews";
 
 const CamperDetailPage = () => {
   const { id } = useParams(); // Отримуємо id з URL
@@ -22,6 +26,14 @@ const CamperDetailPage = () => {
   if (status === "failed") {
     return <p>Error: {error}</p>;
   }
+  if (!camperDetail) {
+    return null
+  }
+
+  const tabs = [
+    { label: "Features", content: <CampDetails camperDetail={camperDetail}/> },
+    { label: "Reviews", content: <Reviews reviews={camperDetail.reviews}/> },
+  ];
 
   return (
     <div className={styles.detailPageContainer}>
@@ -70,8 +82,12 @@ const CamperDetailPage = () => {
             ))}
           </div>
           <div className={styles.description}>{camperDetail.description}</div>
-          <div className={styles.camperDetailBottom}>
-            {/* Vehicle details container */}
+
+          <div className={styles.footerDetails}>
+            <Tabs tabs={tabs} />
+            <BookingForm />
+    </div>
+          {/* <div className={styles.camperDetailBottom}>
             <div className={styles.vehicleDetails}>
               <h3>Vehicle details</h3>
               <div className={styles.vehicleInfo}>
@@ -100,10 +116,9 @@ const CamperDetailPage = () => {
                   <p>{camperDetail.consumption} L/100km</p>
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            {/* Booking form container */}
-            <div className={styles.bookingForm}>
+            {/* <div className={styles.bookingForm}>
               <h3>Book your campervan now</h3>
               <form>
                 <label htmlFor="name">Name*</label>
@@ -120,8 +135,8 @@ const CamperDetailPage = () => {
 
                 <button type="submit" className={styles.submitButton}>Send</button>
               </form>
-            </div>
-          </div>
+            </div> */}
+          {/* </div> */}
         </div>
       ) : (
         <p>No details available</p>

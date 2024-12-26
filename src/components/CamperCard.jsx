@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styles from './CamperCard.module.css';
 import FavoriteButton from './FavoriteButton';  // Імпортуємо компонент
 import SVG from 'react-inlinesvg';
+import { firstLetterUpperCase } from '../helpers/firstLetterUpperCase.js'
 
 const CamperCard = ({ camper }) => {
   if (!camper || !camper.gallery || camper.gallery.length === 0) {
@@ -100,7 +101,7 @@ const CamperCard = ({ camper }) => {
                 height="100%"
                 title={feature}
               />
-              <span>{feature[0].toUpperCase() + feature.slice(1)}</span>
+              <span>{firstLetterUpperCase(feature)}</span>
             </div>
           ))}
 
@@ -112,7 +113,7 @@ const CamperCard = ({ camper }) => {
               height="100%"
               title="Fuel"
             />
-            <span>{engineType[0].toUpperCase() + engineType.slice(1)}</span>
+            <span>{firstLetterUpperCase(engineType)}</span>
           </div>
         </div>
 
