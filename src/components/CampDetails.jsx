@@ -1,38 +1,62 @@
 import React from "react";
-import styles from './CampDetails.module.css';
-import {firstLetterUpperCase} from '../helpers/firstLetterUpperCase'
+import styles from "./CampDetails.module.css";
+import { firstLetterUpperCase } from "../helpers/firstLetterUpperCase";
+import SVG from "react-inlinesvg";
 
-const CampDetails = ({camperDetail}) => {
+const properties = [
+  "tv",
+  "ac",
+  "kitchen",
+  "bathroom",
+  "engine",
+  "gas",
+  "microwave",
+  "water",
+  "radio",
+  "refrigerator",
+];
+const CampDetails = ({ camperDetail }) => {
   return (
     <div className={styles.detailsFeatures}>
       <div className={styles.featuresList}>
-        <div className={styles.featureItem}>Automatic</div>
-        <div className={styles.featureItem}>AC</div>
-        <div className={styles.featureItem}>Radio</div>
-        <div className={styles.featureItem}>Petrol</div>
-        <div className={styles.featureItem}>Kitchen</div>
+        {properties.map(
+          (item) =>
+            (camperDetail[item] || camperDetail[item.toLocaleUpperCase()]) && (
+              <li key={item} className={styles.featureItem}>
+                <SVG
+                  src={`../../public/assets/icons/${item}.svg`}
+                  width={16}
+                  height="100%"
+                  title={item}
+                />
+                {firstLetterUpperCase(
+                  item === "engine" ? camperDetail[item] : item
+                )}
+              </li>
+            )
+        )}
       </div>
 
       <div className={styles.vehicleDetails}>
         <h3 className={styles.subHeading}>Vehicle details</h3>
         <ul className={styles.detailsList}>
           <li className={styles.detailItem}>
-            <strong>Form:</strong> {firstLetterUpperCase(camperDetail.form)}
+            <p>Form:</p> {firstLetterUpperCase(camperDetail.form)}
           </li>
           <li className={styles.detailItem}>
-            <strong>Length:</strong> {camperDetail.length}
+            <p>Length:</p> {camperDetail.length}
           </li>
           <li className={styles.detailItem}>
-            <strong>Width:</strong> {camperDetail.width}
+            <p>Width:</p> {camperDetail.width}
           </li>
           <li className={styles.detailItem}>
-            <strong>Height:</strong> {camperDetail.height}
+            <p>Height:</p> {camperDetail.height}
           </li>
           <li className={styles.detailItem}>
-            <strong>Tank:</strong> {camperDetail.tank}
+            <p>Tank:</p> {camperDetail.tank}
           </li>
           <li className={styles.detailItem}>
-            <strong>Consumption:</strong> {camperDetail.consumption}
+            <p>Consumption:</p> {camperDetail.consumption}
           </li>
         </ul>
       </div>

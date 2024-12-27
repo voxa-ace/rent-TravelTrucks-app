@@ -9,12 +9,15 @@ import Tabs from "../components/Tabs";
 import BookingForm from "../components/BookingForm";
 import CampDetails from "../components/CampDetails";
 import Reviews from "../components/Reviews";
+import { useState } from "react";
+import TabButtons from "../components/TabButtons";
 
 const CamperDetailPage = () => {
   const { id } = useParams(); // Отримуємо id з URL
   const dispatch = useDispatch();
   const { camperDetail, status, error } = useSelector((state) => state.campers);
 
+  const [activeTab, setActiveTab] = useState(0);
   useEffect(() => {
     dispatch(fetchCamperById(id)); // Викликаємо екшен для завантаження camper за id
   }, [dispatch, id]);
@@ -27,12 +30,12 @@ const CamperDetailPage = () => {
     return <p>Error: {error}</p>;
   }
   if (!camperDetail) {
-    return null
+    return null;
   }
 
   const tabs = [
-    { label: "Features", content: <CampDetails camperDetail={camperDetail}/> },
-    { label: "Reviews", content: <Reviews reviews={camperDetail.reviews}/> },
+    { label: "Features", content: <CampDetails camperDetail={camperDetail} /> },
+    { label: "Reviews", content: <Reviews reviews={camperDetail.reviews} /> },
   ];
 
   return (
@@ -45,6 +48,7 @@ const CamperDetailPage = () => {
           <div className={styles.ratingLocation}>
             <div className={styles.rating}>
               <SVG
+                className={styles.starIcon}
                 src="../../public/assets/icons/star_pressed.svg"
                 width={16}
                 height="100%"
@@ -57,6 +61,7 @@ const CamperDetailPage = () => {
             </div>
             <div className={styles.locationContainer}>
               <SVG
+                className={styles.starIcon}
                 src="../../public/assets/icons/map.svg"
                 width={16}
                 height="100%"
@@ -82,61 +87,16 @@ const CamperDetailPage = () => {
             ))}
           </div>
           <div className={styles.description}>{camperDetail.description}</div>
+          <TabButtons
+            activeTab={activeTab}
+            onClick={setActiveTab}
+            tabs={tabs}
+          />
 
           <div className={styles.footerDetails}>
-            <Tabs tabs={tabs} />
+            <Tabs tabs={tabs} activeTab={activeTab} />
             <BookingForm />
-    </div>
-          {/* <div className={styles.camperDetailBottom}>
-            <div className={styles.vehicleDetails}>
-              <h3>Vehicle details</h3>
-              <div className={styles.vehicleInfo}>
-                <div>
-                  <p>Form</p>
-                  <p>{camperDetail.form}</p>
-                </div>
-                <div>
-                  <p>Length</p>
-                  <p>{camperDetail.length} m</p>
-                </div>
-                <div>
-                  <p>Width</p>
-                  <p>{camperDetail.width} m</p>
-                </div>
-                <div>
-                  <p>Height</p>
-                  <p>{camperDetail.height} m</p>
-                </div>
-                <div>
-                  <p>Tank</p>
-                  <p>{camperDetail.tank} L</p>
-                </div>
-                <div>
-                  <p>Consumption</p>
-                  <p>{camperDetail.consumption} L/100km</p>
-                </div>
-              </div>
-            </div> */}
-
-            {/* <div className={styles.bookingForm}>
-              <h3>Book your campervan now</h3>
-              <form>
-                <label htmlFor="name">Name*</label>
-                <input type="text" id="name" name="name" required />
-
-                <label htmlFor="email">Email*</label>
-                <input type="email" id="email" name="email" required />
-
-                <label htmlFor="date">Booking date*</label>
-                <input type="date" id="date" name="date" required />
-
-                <label htmlFor="comment">Comment</label>
-                <textarea id="comment" name="comment" />
-
-                <button type="submit" className={styles.submitButton}>Send</button>
-              </form>
-            </div> */}
-          {/* </div> */}
+          </div>
         </div>
       ) : (
         <p>No details available</p>

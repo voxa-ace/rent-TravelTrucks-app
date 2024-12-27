@@ -1,12 +1,12 @@
 import { useState } from "react";
 import styles from "./tabs.module.css";
 
-const Tabs = ({ tabs }) => {
-  const [activeTab, setActiveTab] = useState(0);
+const Tabs = ({ tabs, activeTab }) => {
+  // const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <div>
-      <div className={styles.tabsButtons}>
+    <>
+      {/* <div className={styles.tabsButtons}>
         {tabs.map((tab, index) => (
           <button
             key={index}
@@ -19,9 +19,9 @@ const Tabs = ({ tabs }) => {
             {tab.label}
           </button>
         ))}
-      </div>
+      </div> */}
       <div className={styles.tabsContent}>{tabs[activeTab].content}</div>
-    </div>
+    </>
   );
 };
 

@@ -29,8 +29,6 @@ const CamperCard = ({ camper }) => {
 
   // Відображаємо тільки ті фільтри, які є true
   const activeFeatures = Object.keys(equipmentIcons).filter((key) => camper[key]);
-  console.log(activeFeatures)
-  console.log(camper.name)
 
   return (
     <div className={styles.card}>

@@ -1,6 +1,8 @@
 /* Контейнер для фото кемпера */
 .detailPageContainer {
-  margin-left: 64px;
+  width: 1332px;
+  margin: 0 auto;
+  padding: 0 10px;
 }
 
 .imageContainer {

@@ -2,9 +2,19 @@
   display: flex;
   justify-content: flex-start;
   margin-bottom: 44px;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #dadde1;
+    bottom: 2px;
+  }
 }
 
 .tabsButton {
+  z-index: 1;
   padding: 10px;
   border: none;
   border-radius: 0;
@@ -12,12 +22,6 @@
   color: black;
   cursor: pointer;
   font-weight: bold;
-}
-
-.tabsContent {
-  border-radius: 10px;
-  padding: 20px;
-  background-color: #f9f9f9;
 }
 
 .tabsButton:hover,

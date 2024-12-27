@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from './BookingForm.module.css';
-
+import toast from 'react-hot-toast';
 const BookingForm = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -9,7 +9,6 @@ const BookingForm = () => {
     comment: "",
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
 
   // Handle input changes
   const handleChange = (event) => {
@@ -23,14 +22,13 @@ const BookingForm = () => {
   // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    setIsSubmitted(true);
-  };
+    toast.success('Successfully!');
+    };
 
   return (
     <div className={styles.bookingForm}>
       <h2>Book your campervan now</h2>
       <p>Stay connected! We are always ready to help you.</p>
-      {!isSubmitted ? (
         <form onSubmit={handleSubmit} className={styles.form}>
           <input
             id="name"
@@ -75,10 +73,7 @@ const BookingForm = () => {
           <div className={styles.buttonContainer}>
             <button type="submit" className={styles.submitButton}>Send</button>
           </div>
-        </form>
-      ) : (
-        <p className={styles.formSent}>Form was sent!</p>
-      )}
+        </form>       
     </div>
   );
 };
