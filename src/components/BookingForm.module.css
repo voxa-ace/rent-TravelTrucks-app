@@ -37,9 +37,10 @@
 .bookingForm textarea {
   width: 100%;
   padding: 10px;
+  background-color: #f9f9f9;
   margin-top: 5px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 12px;
   font-size: 1rem;
   font-family: var(--font-family);
   color: var(--text-color); /* Текст, який вводиться */
