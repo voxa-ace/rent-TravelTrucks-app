@@ -1,68 +1,81 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styles from './CamperCard.module.css';
-import FavoriteButton from './FavoriteButton';  // Імпортуємо компонент
-import SVG from 'react-inlinesvg';
-import { firstLetterUpperCase } from '../helpers/firstLetterUpperCase.js'
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./CamperCard.module.css";
+import FavoriteButton from "./FavoriteButton"; // Імпортуємо компонент
+import SVG from "react-inlinesvg";
+import { firstLetterUpperCase } from "../helpers/firstLetterUpperCase.js";
 
 const CamperCard = ({ camper }) => {
   if (!camper || !camper.gallery || camper.gallery.length === 0) {
     return null;
   }
 
-  const reviewsCount = Array.isArray(camper.reviews) ? camper.reviews.length : 0;
+  const reviewsCount = Array.isArray(camper.reviews)
+    ? camper.reviews.length
+    : 0;
 
   // Мапа для ідентифікаторів іконок
   const equipmentIcons = {
-    AC: 'icon-wind',
-    bathroom: 'icon-droplet',
-    kitchen: 'icon-cup-hot',
-    TV: 'icon-tv',
+    AC: "icon-wind",
+    bathroom: "icon-droplet",
+    kitchen: "icon-cup-hot",
+    TV: "icon-tv",
   };
 
   // Отримуємо назву трансмісії та ідентифікатор іконки
-  const transmissionLabel = camper.transmission === 'automatic' ? 'Automatic' : 'Manual';
-  const transmissionIconId = camper.transmission === 'automatic' ? 'icon-automatic' : 'icon-manual'; 
+  const transmissionLabel =
+    camper.transmission === "automatic" ? "Automatic" : "Manual";
+  const transmissionIconId =
+    camper.transmission === "automatic" ? "icon-automatic" : "icon-manual";
 
   // Отримуємо тип двигуна
-  const engineType = camper.engine || 'Unknown'; // Беремо тип двигуна з бекенду
+  const engineType = camper.engine || "Unknown"; // Беремо тип двигуна з бекенду
 
   // Відображаємо тільки ті фільтри, які є true
-  const activeFeatures = Object.keys(equipmentIcons).filter((key) => camper[key]);
+  const activeFeatures = Object.keys(equipmentIcons).filter(
+    (key) => camper[key]
+  );
 
   return (
     <div className={styles.card}>
       {/* Фото кемпера */}
       <div className={styles.imageContainer}>
-        <img src={camper.gallery[0].thumb} alt={camper.name} className={styles.camperImage} />
+        <img
+          src={camper.gallery[0].thumb}
+          alt={camper.name}
+          className={styles.camperImage}
+        />
       </div>
 
       {/* Інформація про кемпера */}
       <div className={styles.infoContainer}>
         <div className={styles.headerContainer}>
           <h2 className={styles.camperTitle}>{camper.name}</h2>
-          
+
           {/* Контейнер для ціни та лайка */}
           <div className={styles.priceLikeContainer}>
             <span className={styles.price}>€{camper.price},00</span>
             <FavoriteButton camperId={camper.id} />
           </div>
         </div>
-        
+
         <div className={styles.ratingLocation}>
           <div className={styles.rating}>
             <SVG
+              className={styles.starIcon}
               src="../../public/assets/icons/star_pressed.svg"
               width={16}
               height="100%"
               title="Rating"
             />
             <span className={styles.ratingAndReviews}>
-              {camper.rating} ({reviewsCount} {reviewsCount === 1 ? 'Review' : 'Reviews'})
+              {camper.rating} ({reviewsCount}{" "}
+              {reviewsCount === 1 ? "Review" : "Reviews"})
             </span>
           </div>
           <div className={styles.locationContainer}>
             <SVG
+              className={styles.starIcon}
               src="../../public/assets/icons/map.svg"
               width={16}
               height="100%"

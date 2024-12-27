@@ -11,6 +11,14 @@
   flex-direction: column;
 }
 
+.starIcon {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  fill: currentColor;
+  color: #101828;
+}
+
 @media (min-width: 768px) {
   .card {
     flex-direction: row;
@@ -151,7 +159,7 @@
   justify-content: center;
   padding: 12px 18px;
   border-radius: 100px;
-  background: #F2F4F7;
+  background: #f2f4f7;
 }
 
 .equipmentBadge svg {
@@ -174,7 +182,7 @@
 
 /* Show More Button - swapping hover and normal colors */
 .showMoreButton {
-  background-color: #E44848; /* Updated to match hover color */
+  background-color: #e44848; /* Updated to match hover color */
   color: white;
   padding: 16px 32px;
   border-radius: 200px;
@@ -187,8 +195,5 @@
 }
 
 .showMoreButton:hover {
-  background-color: #D84343; /* Updated to swap colors */
+  background-color: #d84343; /* Updated to swap colors */
 }
-
-
-
