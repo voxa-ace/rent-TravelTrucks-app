@@ -35,41 +35,42 @@
 
 .bookingForm input,
 .bookingForm textarea {
-  width: 100%;
+  width: 527px; /* Fixed width */
+  height: 60px; /* Fixed height */
   padding: 10px;
   background-color: #f9f9f9;
-  margin-top: 5px;
-  border: 1px solid #ddd;
+  margin-top: 14px; /* Distance between input fields */
+  border: none; /* Make the border invisible */
   border-radius: 12px;
   font-size: 1rem;
   font-family: var(--font-family);
-  color: var(--text-color); /* Текст, який вводиться */
+  color: var(--text-color); /* Text entered */
 }
 
 .bookingForm input::placeholder,
 .bookingForm textarea::placeholder {
-  color: var(--placeholder-color); /* Колір плейсхолдера */
+  color: var(--placeholder-color); /* Placeholder color */
 }
 
 .bookingForm textarea {
   resize: none;
   height: 100px;
+  margin-bottom: 24px; /* Distance from textarea to the button */
 }
 
-/* Кнопка відправки */
+/* Submit Button */
 .buttonContainer {
   display: flex;
-  justify-content: center; /* Горизонтальне центрування */
-  align-items: center; /* Вертикальне центрування */
+  justify-content: center; /* Horizontal centering */
+  align-items: center; /* Vertical centering */
   height: 100%;
 }
 .submitButton {
-  background-color: var(--button, #e44848); /* Змінна з кольором кнопки */
+  background-color: var(--button, #e44848); /* Button color variable */
   border-radius: 200px;
   padding: 16px 60px;
   width: 166px;
   height: 56px;
-  margin-top: 24px;
   border: none;
   color: white;
   font-family: var(--font-family);

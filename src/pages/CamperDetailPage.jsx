@@ -22,6 +22,10 @@ const CamperDetailPage = () => {
     dispatch(fetchCamperById(id)); // Викликаємо екшен для завантаження camper за id
   }, [dispatch, id]);
 
+  const handleReviewsClick = (e) => {
+    e.preventDefault();
+    setActiveTab(1);
+  };
   if (status === "loading") {
     return <p>Loading...</p>;
   }
@@ -54,10 +58,14 @@ const CamperDetailPage = () => {
                 height="100%"
                 title="Rating"
               />
-              <span className={styles.ratingAndReviews}>
+              <a
+                href="#reviews"
+                onClick={(e) => handleReviewsClick(e)}
+                className={styles.ratingAndReviews}
+              >
                 {camperDetail.rating} ({camperDetail.reviews.length}{" "}
                 {camperDetail.reviews.length === 1 ? "Review" : "Reviews"})
-              </span>
+              </a>
             </div>
             <div className={styles.locationContainer}>
               <SVG

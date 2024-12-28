@@ -1,13 +1,24 @@
-import React from 'react';
+import React from "react";
+import styles from "./Reviews.module.css";
+import RatingStars from "./RatingStars.jsx";
 
 const Reviews = ({ reviews }) => {
   return (
-    <div className="reviews">
-      <h3>User Reviews</h3>
+    <div className="reviews" id="reviews">
       {reviews.map((review, index) => (
-        <div key={index} className="review">
-          <p>{review.comment}</p>
-          <p>Rating: {review.rating}/5</p>
+        <div key={index} className={styles.reviewItem}>
+          <div className={styles.reviewHeader}>
+            <div className={styles.reviewAvatar}>
+              {review.reviewer_name.slice(0, 1)}
+            </div>
+            <div className={styles.reviewNameRating}>
+              <div className={styles.reviewName}>{review.reviewer_name}</div>
+              <div>
+                <RatingStars rating={review.reviewer_rating} />
+              </div>
+            </div>
+          </div>
+          <div className={styles.reviewComment}>{review.comment}</div>
         </div>
       ))}
     </div>

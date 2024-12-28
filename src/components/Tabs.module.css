@@ -14,12 +14,6 @@
   font-weight: bold;
 }
 
-.tabsContent {
-  border-radius: 10px;
-  padding: 20px;
-  background-color: #f9f9f9;
-}
-
 .tabsButton:hover,
 .tabsButton:focus {
   background-color: transparent;

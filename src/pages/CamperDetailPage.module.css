@@ -167,6 +167,10 @@
   column-gap: 48px;
 }
 
+.footerDetails > div {
+  max-width: 50%;
+}
+
 /* Booking form section */
 .bookingForm {
   flex: 1;
