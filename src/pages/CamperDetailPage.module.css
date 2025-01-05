@@ -22,6 +22,7 @@
 .images {
   display: flex;
   column-gap: 20px;
+  margin-top: 30px;
 }
 
 .headerContainer {
@@ -165,6 +166,8 @@
 .footerDetails {
   display: flex;
   column-gap: 48px;
+  align-items: stretch;
+  margin-bottom: 40px;
 }
 
 .footerDetails > div {

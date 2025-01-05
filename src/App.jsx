@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import CatalogPage from './pages/CatalogPage';
 import CamperDetailPage from './pages/CamperDetailPage';
 import Navbar from './components/Navbar';
+import './App.css';
 
 const App = () => {
   return (

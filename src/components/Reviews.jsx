@@ -2,9 +2,9 @@ import React from "react";
 import styles from "./Reviews.module.css";
 import RatingStars from "./RatingStars.jsx";
 
-const Reviews = ({ reviews }) => {
+const Reviews = ({ reviews, reviewsSectionRef }) => {
   return (
-    <div className="reviews" id="reviews">
+    <div ref={reviewsSectionRef}>
       {reviews.map((review, index) => (
         <div key={index} className={styles.reviewItem}>
           <div className={styles.reviewHeader}>

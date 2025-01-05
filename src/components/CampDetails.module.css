@@ -21,6 +21,11 @@
   padding: 44px 52px;
   border-radius: 10px;
   background-color: #f7f7f7;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 }
 
 .featuresList {

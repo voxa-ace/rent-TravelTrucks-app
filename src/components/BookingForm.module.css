@@ -14,7 +14,7 @@
   background-color: #fff;
   padding: 44px 57px;
   border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0,0,0,0.1);
   font-family: var(--font-family);
 }
 
@@ -45,6 +45,11 @@
   font-size: 1rem;
   font-family: var(--font-family);
   color: var(--text-color); /* Text entered */
+}
+
+.bookingForm input:focus-visible,
+.bookingForm textarea:focus-visible {
+  outline: none;
 }
 
 .bookingForm input::placeholder,

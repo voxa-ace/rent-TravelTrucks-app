@@ -22,3 +22,7 @@
   height: 24px;
   fill: var(--main-color, #000); /* Ensure the icon gets a default fill color */
 }
+
+body {
+  font-family: var(--font-family);
+}

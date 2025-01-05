@@ -1,5 +1,5 @@
 // src/pages/CamperDetailPage.jsx
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useParams } from "react-router-dom"; // Використовуємо useParams для отримання id з URL
 import { fetchCamperById } from "../store/slices/campersSlice"; // Імпортуємо fetchCamperById
@@ -17,15 +17,30 @@ const CamperDetailPage = () => {
   const dispatch = useDispatch();
   const { camperDetail, status, error } = useSelector((state) => state.campers);
 
+  const reviewsSectionRef = useRef(null);
+
   const [activeTab, setActiveTab] = useState(0);
+  const [shouldScrollToReviews, setShouldScrollToReviews] = useState(false);
+
   useEffect(() => {
     dispatch(fetchCamperById(id)); // Викликаємо екшен для завантаження camper за id
   }, [dispatch, id]);
 
+  useEffect(() => {
+    if (reviewsSectionRef.current) {
+      reviewsSectionRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }, [shouldScrollToReviews]);
+
   const handleReviewsClick = (e) => {
     e.preventDefault();
     setActiveTab(1);
+    setShouldScrollToReviews(true);
   };
+
   if (status === "loading") {
     return <p>Loading...</p>;
   }
@@ -39,7 +54,7 @@ const CamperDetailPage = () => {
 
   const tabs = [
     { label: "Features", content: <CampDetails camperDetail={camperDetail} /> },
-    { label: "Reviews", content: <Reviews reviews={camperDetail.reviews} /> },
+    { label: "Reviews", content: <Reviews reviewsSectionRef={reviewsSectionRef} reviews={camperDetail.reviews} /> },
   ];
 
   return (
