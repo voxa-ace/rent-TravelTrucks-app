@@ -1,6 +1,5 @@
-// LoadMoreButton.jsx
-import React from 'react';
-import styles from './LoadMoreButton.module.css';
+import React from "react";
+import styles from "./LoadMoreButton.module.css";
 
 const LoadMoreButton = ({ onClick }) => {
   return (

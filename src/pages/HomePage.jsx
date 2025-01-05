@@ -1,6 +1,6 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import styles from './HomePage.module.css'; // Importing CSS module
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import styles from "./HomePage.module.css";
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -10,7 +10,7 @@ const HomePage = () => {
       <div className={styles.hero}>
         <h1>Campers of your dreams</h1>
         <p>You can find everything you want in our catalog</p>
-        <button onClick={() => navigate('/catalog')}>View Now</button>
+        <button onClick={() => navigate("/catalog")}>View Now</button>
       </div>
     </div>
   );

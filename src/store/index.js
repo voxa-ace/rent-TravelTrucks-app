@@ -1,9 +1,8 @@
-// src/store/index.js
-import { configureStore } from '@reduxjs/toolkit';
-import campersReducer from './slices/campersSlice';  // Імпорт редюсера
+import { configureStore } from "@reduxjs/toolkit";
+import campersReducer from "./slices/campersSlice";
 
 export const store = configureStore({
   reducer: {
-    campers: campersReducer,  // Додаємо редюсер до store
+    campers: campersReducer, // Додаємо редюсер до store
   },
 });

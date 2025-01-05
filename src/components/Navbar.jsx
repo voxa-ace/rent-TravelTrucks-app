@@ -1,7 +1,7 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom'; // Use NavLink for active links
-import styles from './Navbar.module.css';
-import Logo from '../assets/icons/logo.svg'; // Assuming your SVG logo file is in this path
+import React from "react";
+import { NavLink } from "react-router-dom";
+import styles from "./Navbar.module.css";
+import Logo from "../assets/icons/logo.svg";
 
 const Navbar = () => {
   return (

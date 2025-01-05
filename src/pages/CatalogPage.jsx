@@ -1,25 +1,24 @@
-// CatalogPage.jsx
-import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchCampers } from '../store/slices/campersSlice';
-import FilterSection from '../components/FilterSection';
-import CamperCard from '../components/CamperCard';
-import LoadMoreButton from '../components/LoadMoreButton';  // Імпортуємо компонент кнопки
-import styles from './CatalogPage.module.css';
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { fetchCampers } from "../store/slices/campersSlice";
+import FilterSection from "../components/FilterSection";
+import CamperCard from "../components/CamperCard";
+import LoadMoreButton from "../components/LoadMoreButton";
+import styles from "./CatalogPage.module.css";
 
 const vehicleTypes = {
-  "van": "panelTruck", 
+  van: "panelTruck",
   "fully-integrated": "fullyIntegrated",
-  "alcove": "alcove"
-}
+  alcove: "alcove",
+};
 const CatalogPage = () => {
   const dispatch = useDispatch();
   const { campersList, status, error } = useSelector((state) => state.campers);
   const [visibleCount, setVisibleCount] = useState(4);
   const [selectedFilters, setSelectedFilters] = useState({
-    location: '',
+    location: "",
     equipment: [],
-    vehicleType: '',
+    vehicleType: "",
   });
 
   useEffect(() => {
@@ -29,43 +28,46 @@ const CatalogPage = () => {
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 4);
   };
-  const filteredCampers = campersList?.items?.filter((camper) => {
-    const matchesLocation = selectedFilters.location
-      ? camper.location.toLowerCase().includes(selectedFilters.location.toLowerCase())
-      : true;
-    const matchesEquipment = selectedFilters.equipment.every((equip) => {
-      const updateEquip = equip.toLowerCase()
-      if (updateEquip === "automatic") {
-        return camper.transmission === updateEquip
-      }
-      
-      return camper[equip] || camper[updateEquip]
-  });
-    const matchesVehicleType = selectedFilters.vehicleType
-      ? camper.form === vehicleTypes[selectedFilters.vehicleType]
-      : true;
-    return matchesEquipment && matchesLocation && matchesVehicleType;
-  }) || [];
-    return (
+  const filteredCampers =
+    campersList?.items?.filter((camper) => {
+      const matchesLocation = selectedFilters.location
+        ? camper.location
+            .toLowerCase()
+            .includes(selectedFilters.location.toLowerCase())
+        : true;
+      const matchesEquipment = selectedFilters.equipment.every((equip) => {
+        const updateEquip = equip.toLowerCase();
+        if (updateEquip === "automatic") {
+          return camper.transmission === updateEquip;
+        }
+
+        return camper[equip] || camper[updateEquip];
+      });
+      const matchesVehicleType = selectedFilters.vehicleType
+        ? camper.form === vehicleTypes[selectedFilters.vehicleType]
+        : true;
+      return matchesEquipment && matchesLocation && matchesVehicleType;
+    }) || [];
+  return (
     <div className={styles.container}>
       <FilterSection
         selectedFilters={selectedFilters}
         setSelectedFilters={setSelectedFilters}
       />
       <div className={styles.campersList}>
-        {status === 'loading' && <p>Loading campers...</p>}
-        {status === 'failed' && <p>Error: {error}</p>}
+        {status === "loading" && <p>Loading campers...</p>}
+        {status === "failed" && <p>Error: {error}</p>}
         {filteredCampers.length > 0 ? (
           <>
             {filteredCampers.slice(0, visibleCount).map((camper) => (
               <CamperCard key={camper.id} camper={camper} />
             ))}
             {filteredCampers.length > visibleCount && (
-              <LoadMoreButton onClick={handleLoadMore} /> 
+              <LoadMoreButton onClick={handleLoadMore} />
             )}
           </>
         ) : (
-          status !== 'loading' && <p>No campers found</p>
+          status !== "loading" && <p>No campers found</p>
         )}
       </div>
     </div>

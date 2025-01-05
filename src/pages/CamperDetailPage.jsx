@@ -1,8 +1,7 @@
-// src/pages/CamperDetailPage.jsx
 import React, { useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useParams } from "react-router-dom"; // Використовуємо useParams для отримання id з URL
-import { fetchCamperById } from "../store/slices/campersSlice"; // Імпортуємо fetchCamperById
+import { useParams } from "react-router-dom";
+import { fetchCamperById } from "../store/slices/campersSlice";
 import styles from "./CamperDetailPage.module.css";
 import SVG from "react-inlinesvg";
 import Tabs from "../components/Tabs";
@@ -29,9 +28,9 @@ const CamperDetailPage = () => {
   useEffect(() => {
     if (reviewsSectionRef.current) {
       reviewsSectionRef.current.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      })
+        behavior: "smooth",
+        block: "start",
+      });
     }
   }, [shouldScrollToReviews]);
 
@@ -54,7 +53,15 @@ const CamperDetailPage = () => {
 
   const tabs = [
     { label: "Features", content: <CampDetails camperDetail={camperDetail} /> },
-    { label: "Reviews", content: <Reviews reviewsSectionRef={reviewsSectionRef} reviews={camperDetail.reviews} /> },
+    {
+      label: "Reviews",
+      content: (
+        <Reviews
+          reviewsSectionRef={reviewsSectionRef}
+          reviews={camperDetail.reviews}
+        />
+      ),
+    },
   ];
 
   return (
