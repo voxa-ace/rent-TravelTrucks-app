@@ -4,6 +4,7 @@ import styles from "./CamperCard.module.css";
 import FavoriteButton from "./FavoriteButton"; // Імпортуємо компонент
 import SVG from "react-inlinesvg";
 import { firstLetterUpperCase } from "../helpers/firstLetterUpperCase.js";
+import { truncateString } from "../helpers/truncateString.js";
 
 const CamperCard = ({ camper }) => {
   if (!camper || !camper.gallery || camper.gallery.length === 0) {
@@ -87,7 +88,7 @@ const CamperCard = ({ camper }) => {
 
         {/* Опис */}
         <p className={styles.description}>
-          Embrace simplicity and freedom with the Mavericks panel truck...
+          {truncateString(camper.description, 85)}
         </p>
 
         {/* Значки обладнання */}
