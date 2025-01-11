@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import styles from "./BookingForm.module.css";
 import toast from "react-hot-toast";
+
+const defaultFormState = {
+  name: "",
+  email: "",
+  date: "",
+  comment: "",
+};
 const BookingForm = () => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    date: "",
-    comment: "",
-  });
+  const [formData, setFormData] = useState(defaultFormState);
 
   // Handle input changes
   const handleChange = (event) => {
@@ -22,6 +24,7 @@ const BookingForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     toast.success("Successfully!");
+    setFormData(defaultFormState);
   };
 
   return (
