@@ -21,9 +21,17 @@ const CatalogPage = () => {
     vehicleType: "",
   });
 
-  useEffect(() => {
-    dispatch(fetchCampers());
-  }, [dispatch]);
+useEffect(() => {
+  const apiFilters = {
+    location: selectedFilters.location || undefined,
+    transmission: selectedFilters.equipment.includes("Automatic") ? "automatic" : undefined,
+    form: vehicleTypes[selectedFilters.vehicleType] || undefined,
+    limit: visibleCount,
+  };
+
+  dispatch(fetchCampers(apiFilters));
+}, [dispatch, selectedFilters, visibleCount]);
+
 
   const handleLoadMore = () => {
     setVisibleCount((prevCount) => prevCount + 4);
