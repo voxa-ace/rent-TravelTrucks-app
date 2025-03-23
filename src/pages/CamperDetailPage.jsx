@@ -45,8 +45,14 @@ const CamperDetailPage = () => {
   }
 
   if (status === "failed") {
-    return <p>Error: {error}</p>;
+    return (
+      <div style={{ padding: "2rem", textAlign: "center" }}>
+        <h2>404 - Camper not found</h2>
+        <p>The camper you're looking for does not exist.</p>
+      </div>
+    );
   }
+  
   if (!camperDetail) {
     return null;
   }
