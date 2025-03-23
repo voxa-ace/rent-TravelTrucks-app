@@ -15,10 +15,11 @@ const properties = [
   "radio",
   "refrigerator",
 ];
+
 const CampDetails = ({ camperDetail }) => {
   return (
     <div className={styles.detailsFeatures}>
-      <div className={styles.featuresList}>
+      <ul className={styles.featuresList}>
         {properties.map(
           (item) =>
             (camperDetail[item] || camperDetail[item.toLocaleUpperCase()]) && (
@@ -35,7 +36,7 @@ const CampDetails = ({ camperDetail }) => {
               </li>
             )
         )}
-      </div>
+      </ul>
 
       <div className={styles.vehicleDetails}>
         <h3 className={styles.subHeading}>Vehicle details</h3>
