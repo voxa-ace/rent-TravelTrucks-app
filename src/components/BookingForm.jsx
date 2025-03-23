@@ -1,28 +1,25 @@
 import React, { useState } from "react";
 import styles from "./BookingForm.module.css";
 import toast from "react-hot-toast";
+import DateInput from "./DateInput"; // використання окремого компонента
 
 const defaultFormState = {
   name: "",
   email: "",
-  date: "",
+  date: null,
   comment: "",
 };
+
 const BookingForm = () => {
   const [formData, setFormData] = useState(defaultFormState);
 
-  // Handle input changes
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle form submission
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     toast.success("Successfully!");
     setFormData(defaultFormState);
   };
@@ -42,6 +39,7 @@ const BookingForm = () => {
           onChange={handleChange}
           className={styles.input}
         />
+
         <input
           id="email"
           type="email"
@@ -52,18 +50,14 @@ const BookingForm = () => {
           onChange={handleChange}
           className={styles.input}
         />
-        <input
-          id="date"
-          type="text"
-          name="date"
-          placeholder="Booking date*"
-          required
-          value={formData.date}
-          onFocus={(e) => (e.target.type = "date")}
-          onBlur={(e) => (e.target.type = "text")}
-          onChange={handleChange}
-          className={styles.input}
+
+        <DateInput
+          selectedDate={formData.date}
+          onChange={(date) =>
+            setFormData((prev) => ({ ...prev, date }))
+          }
         />
+
         <textarea
           id="comment"
           name="comment"
@@ -72,6 +66,7 @@ const BookingForm = () => {
           onChange={handleChange}
           className={styles.textarea}
         />
+
         <div className={styles.buttonContainer}>
           <button type="submit" className={styles.submitButton}>
             Send
