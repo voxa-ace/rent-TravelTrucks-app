@@ -45,3 +45,7 @@ Booking form with validation and success notification
 Lazy loaded pages using React.lazy() and Suspense
 
 404 page for invalid routes
+
+
+👤 Author
+Volodymyr Kashnikov
